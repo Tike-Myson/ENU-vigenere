@@ -22,7 +22,7 @@ func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
 	flag.Parse()
 
-	*addr = os.Getenv("PORT")
+	*addr = ":" + os.Getenv("PORT")
 
 
 	infoLog := log.New(os.Stdout, Green+"INFO\t"+Reset, log.Ldate|log.Ltime)
