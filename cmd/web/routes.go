@@ -11,6 +11,7 @@ func (app *application) routes() http.Handler {
 	standardMiddleware := alice.New(app.recoverPanic, app.logRequest, secureHeaders)
 
 	mux := pat.New()
+	mux.Get("/", standardMiddleware.ThenFunc(app.home))
 	mux.Get("/encrypt", standardMiddleware.ThenFunc(app.encryptForm))
 	mux.Get("/decrypt", standardMiddleware.ThenFunc(app.decryptForm))
 	mux.Get("/bruteforce", standardMiddleware.ThenFunc(app.bruteforceForm))

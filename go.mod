@@ -1,5 +1,6 @@
 module github.com/Tike-Myson/ENU-vigenere
 
+// +heroku goVersion go1.16
 go 1.16
 
 require (

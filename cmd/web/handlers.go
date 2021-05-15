@@ -6,6 +6,10 @@ func (app *application) encryptForm(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, "./ui/html/encrypt.html")
 }
 
+func (app *application) home(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello World!"))
+}
+
 func (app *application) decryptForm(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, "./ui/html/decrypt.html")
 }
