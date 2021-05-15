@@ -22,7 +22,7 @@ func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
 	flag.Parse()
 
-	*addr = ":" + os.Getenv("PORT")
+	*addr = os.Getenv("PORT")
 
 
 	infoLog := log.New(os.Stdout, Green+"INFO\t"+Reset, log.Ldate|log.Ltime)
@@ -39,7 +39,7 @@ func main() {
 		Handler:  app.routes(),
 	}
 
-	infoLog.Printf("Server run on http://127.0.0.1%s/encrypt\n", *addr)
+	infoLog.Printf("Server run on http://127.0.0.1:%s/encrypt\n", *addr)
 	err := srv.ListenAndServe()
 	errorLog.Fatal(err)
 
