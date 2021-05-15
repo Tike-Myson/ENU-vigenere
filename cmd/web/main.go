@@ -4,7 +4,7 @@ import (
 	"flag"
 	"log"
 	"net/http"
-	"os"
+	os "os"
 )
 
 var (
@@ -21,6 +21,9 @@ type application struct {
 func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
 	flag.Parse()
+
+	*addr = os.Getenv("PORT")
+
 
 	infoLog := log.New(os.Stdout, Green+"INFO\t"+Reset, log.Ldate|log.Ltime)
 	errorLog := log.New(os.Stderr, Red+"ERROR\t"+Reset, log.Ldate|log.Ltime|log.Lshortfile)
