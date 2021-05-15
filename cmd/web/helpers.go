@@ -22,11 +22,11 @@ func (app *application) notFound(w http.ResponseWriter) {
 	app.clientError(w, http.StatusNotFound)
 }
 
-func (app *application) render(w http.ResponseWriter, r *http.Request, name string) {
+func (app *application) render(w http.ResponseWriter, r *http.Request, name string) *template.Template {
 	t, err := template.ParseFiles(name)
 	if err != nil {
 		app.serverError(w, fmt.Errorf("The template %s does not exist", name))
-		return
+		return nil
 	}
-	t.Execute(w, nil)
+	return t
 }

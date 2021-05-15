@@ -1,19 +1,19 @@
 package main
 
-type encryptTemplate struct {
-	message string
-}
-
-type decryptTemplate struct {
-	message string
+type cryptTemplate struct {
+	Key string
+	Plaintext string
+	Ciphertext string
 }
 
 type bruteforceTemplate struct {
-	result []resultBoard
+	KeyLength int
+	Ciphertext string
+	Result []resultBoard
 }
 
 type resultBoard struct {
-	id int
-	key string
-	percent float32
+	Id int
+	Key string
+	Percent string
 }

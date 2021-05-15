@@ -7,7 +7,7 @@
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.83.1">
   <title>ENU · Vigenere</title>
-
+  <link rel="icon" href="../static/img/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
 
@@ -35,12 +35,12 @@
   <!-- Custom styles for this template -->
   <link href="../static/css/cover.css" rel="stylesheet">
 </head>
-<body class="d-flex h-100 text-center text-white bg-dark">
+<body class="d-flex h-auto text-center text-white bg-dark">
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="mb-auto">
     <div>
-      <h3 class="float-md-start mb-0">Vigenere</h3>
+      <a class="text-white text-decoration-none" href="/"><h3 class="float-md-start mb-0">Vigenere</h3></a>
       <nav class="nav nav-masthead justify-content-center float-md-end">
         <a class="nav-link" href="/encrypt">Encrypt</a>
         <a class="nav-link" href="/decrypt">Decrypt</a>
@@ -50,31 +50,39 @@
   </header>
 
   <main class="px-3">
-    <div class="mb-3">
-      <label for="message" class="form-label">Encrypted message</label>
-      <textarea class="form-control" id="message" rows="3"></textarea>
-    </div>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-success">Attack</a>
-    </p>
-    <div class="mb-3">
-      <label class="form-label">Results</label>
-        <ul class="justify-content-center list-group list-group-horizontal mb-3">
-          <li class="list-group-item">ID</li>
-          <li class="list-group-item">Possible key</li>
-          <li class="list-group-item">Match percentage</li>
+    <form method="post">
+      <div class="mb-3">
+        <label for="keyLength" class="form-label">Key length</label>
+        <input value="{{.KeyLength}}" type="text" class="form-control" name="keyLength" id="keyLength">
+      </div>
+      <div class="mb-3">
+        <label for="ciphertext" class="form-label">Ciphertext</label>
+        <textarea class="form-control" id="ciphertext" name="ciphertext" rows="3">{{.Ciphertext}}</textarea>
+      </div>
+      <p class="lead">
+        <button type="submit" class="btn btn-success">Attack</button>
+      </p>
+      <div class="mb-3">
+        <label class="form-label">Results</label>
+          <ul class="justify-content-center list-group list-group-horizontal mb-3">
+            <li class="list-group-item">ID</li>
+            <li class="list-group-item">Possible key</li>
+            <li class="list-group-item">Match percentage</li>
 
+          </ul>
+        {{ range .Result}}
+        <ul class="justify-content-center list-group list-group-horizontal mb-3">
+          <li class="list-group-item">{{ .Id }}</li>
+          <li class="list-group-item">{{ .Key}}</li>
+          <li class="list-group-item">{{ .Percent }}%</li>
         </ul>
-      <ul class="justify-content-center list-group list-group-horizontal mb-3">
-        <li class="list-group-item">1</li>
-        <li class="list-group-item">World</li>
-        <li class="list-group-item">78.14%</li>
-      </ul>
-    </div>
+        {{ end }}
+      </div>
+    </form>
   </main>
 
   <footer class="mt-auto text-white-50">
-    <p>Powered by <a href="https://golang.org/" class="text-white text-decoration-none">Go</a> & <a  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="text-white text-decoration-none">💚</a> in 2021.</p>
+    <p>Powered by <a href="https://golang.org/" class="text-white text-decoration-none">Go</a> & <a  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="text-white text-decoration-none">💚</a> in <a href="https://fit.enu.kz/" class="text-white text-decoration-none">ENU</a>, 2021.</p>
   </footer>
 </div>
 </body>

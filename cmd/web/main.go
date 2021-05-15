@@ -39,7 +39,7 @@ func main() {
 		Handler:  app.routes(),
 	}
 
-	infoLog.Printf("Server run on http://127.0.0.1:%s/encrypt\n", *addr)
+	infoLog.Printf("Server run on http://127.0.0.1:%s\n", *addr)
 	err := srv.ListenAndServe()
 	errorLog.Fatal(err)
 
